@@ -7,7 +7,9 @@ use std::net::{IpAddr, Ipv4Addr, Ipv6Addr};
 use std::time::Duration;
 use std::u32;
 
+
 use crate::sys::Socket;
+use crate::sys;
 
 pub trait IsMinusOne {
     fn is_minus_one(&self) -> bool;
@@ -49,7 +51,7 @@ pub trait IntoInner<Inner> {
 impl FromInner<libc::sockaddr> for IpAddr {
     fn from_inner(inner: libc::sockaddr) -> IpAddr {
         match inner.sa_family as i32 {
-            libc::AF_INET => {
+            sys::AF_INET => {
                 // TODO: probably `ref` can be used here
                 let addr: libc::sockaddr_in =
                     unsafe { *(&inner as *const _ as *const libc::sockaddr_in) as libc::sockaddr_in };
