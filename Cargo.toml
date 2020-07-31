@@ -12,4 +12,4 @@ edition = "2018"
 default = []
 
 [dependencies]
-libc = "0.2.51"
+libc = "0.2"

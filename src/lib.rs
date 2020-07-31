@@ -10,7 +10,7 @@ mod socket;
 mod sys;
 
 #[cfg(windows)]
-#[path = "sys/mod.rs"]
+#[path = "sys/windows.rs"]
 mod sys;
 
 pub use socket::IcmpSocket;

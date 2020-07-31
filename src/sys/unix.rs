@@ -3,11 +3,12 @@ use std::mem;
 use std::net::IpAddr;
 
 use crate::compat::{cvt, getsockopt, setsockopt, AsInner, FromInner, IntoInner};
+use libc::{IPPROTO_ICMP,IP_TOS};
 
 // Following constants are not defined in libc (as for 0.2.17 version)
-const IPPROTO_ICMP: libc::c_int = 1;
+
 // Ipv4
-const IP_TOS: libc::c_int = 1;
+// const IP_TOS: libc::c_int = 1;
 // Ipv6
 const IPV6_UNICAST_HOPS: libc::c_int = 16;
 const IPV6_TCLASS: libc::c_int = 67;
